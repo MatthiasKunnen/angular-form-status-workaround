@@ -1,6 +1,6 @@
 {
     "name": "angular-form-status-workaround",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Workaround for an Angular form bug with async validators",
     "author": {
         "email": "matthias.kunnen@gmail.com",
