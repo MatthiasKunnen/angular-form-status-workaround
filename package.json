@@ -1,0 +1,30 @@
+{
+    "name": "angular-form-status-workaround",
+    "version": "0.0.0",
+    "description": "Workaround for an Angular form bug with async validators",
+    "author": {
+        "email": "matthias.kunnen@gmail.com",
+        "name": "Matthias Kunnen"
+    },
+    "main": "index.js",
+    "types": "index.d.ts",
+    "license": "MIT",
+    "keywords": [
+        "Angular",
+        "Form status",
+        "Form pending",
+        "Async validators"
+    ],
+    "scripts": {
+        "build": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "@angular/core": "^2.0.0",
+        "@angular/forms": "^2.0.0",
+        "rxjs": "^5.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MatthiasKunnen/angular-form-status-workaround"
+    }
+}
