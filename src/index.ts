@@ -1,8 +1,11 @@
 import { AbstractControl } from '@angular/forms';
 
-import { MonoTypeOperatorFunction } from 'rxjs/interfaces';
-import { interval } from 'rxjs/observable/interval';
-import { distinctUntilChanged, map, merge } from 'rxjs/operators';
+import {
+    interval,
+    merge,
+    MonoTypeOperatorFunction,
+} from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 /**
  * Temporary async validator fix until
@@ -15,7 +18,10 @@ import { distinctUntilChanged, map, merge } from 'rxjs/operators';
 export const fixFormStatus: (
     control: AbstractControl,
     interval?: number,
-) => MonoTypeOperatorFunction<string> = (control, i = 250) => source => source.pipe(
-    merge(interval(i).pipe(map(() => control.status))),
-    distinctUntilChanged(),
-);
+) => MonoTypeOperatorFunction<string> = (control, i = 250) => source =>
+    merge(
+        source,
+        interval(i).pipe(map(() => control.status)),
+    ).pipe(
+        distinctUntilChanged(),
+    );
