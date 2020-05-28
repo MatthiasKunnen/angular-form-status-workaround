@@ -25,3 +25,21 @@ This operator can also be used on any subclass of
 It is also possible to state the rate at which the status will be checked by
 passing the time in milliseconds as a second argument. Example:
 `fixFormStatus(form, 100)`. The default rate is 250ms.
+
+## Unsubscribing
+`statusChanges` like `valueChanges` returns an observable that does not complete. You must
+unsubscribe to avoid memory leaks and unwanted behavior. This can be achieved using `takeUntil` and
+`takeWhile`.
+
+## Examples
+Only get notified when status is no longer pending.
+
+```TypeScript
+this.form.statusChanges.pipe(
+    fixFormStatus(this.form),
+    takeWhile(status => status === 'PENDING', true),
+    last(),
+).subscribe(() => {
+    // Emits once when status is no longer pending, then completes
+});
+```
